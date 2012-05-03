@@ -6,4 +6,4 @@
     (count (filter #(factor? n %) (range 1 21))) 
     20))
 
-(nth (filter #(factors-upto-20? %) (range)) 1)
+(println (nth (filter #(factors-upto-20? %) (range)) 1))
