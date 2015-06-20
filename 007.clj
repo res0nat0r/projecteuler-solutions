@@ -9,4 +9,4 @@
 (defn prime? [n]
     (empty? (factors n)))
 
-(nth (filter prime? (range)) 10002)
+(println (nth (filter prime? (range)) 10002))
