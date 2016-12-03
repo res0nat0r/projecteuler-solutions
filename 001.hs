@@ -2,10 +2,5 @@
 
 module Main where
 
-multiple3or5 :: (Integral x) => x -> x
-multiple3or5 x 
-  | (x `mod` 3 == 0) || (x `mod` 5 == 0) = x
-  | otherwise = 0
-
-main = do
-  putStrLn $ show $ sum $ map multiple3or5 [999,998..1]
+main = putStrLn (show answer)
+answer = sum [x | x <- [1..999], mod x 3 == 0 || mod x 5 == 0]
