@@ -7,4 +7,4 @@ all: 001 002
 	stack ghc 002.hs
 
 clean: 
-	rm ??? *.hi *.o
+	rm -f ??? *.hi *.o
