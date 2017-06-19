@@ -37,6 +37,6 @@ input =
 main = print result
 
 array = map (read . (:"")) input :: [Integer]
-result = maximum $ map product $ map (take 13) (tails array)
+result = maximum $ map (product . take 13) $ tails array
 
 -- 23514624000
