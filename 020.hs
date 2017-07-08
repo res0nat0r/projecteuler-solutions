@@ -13,4 +13,6 @@ module Main where
 
 factorial n = product [1..n]
 
-main = print $ sum (map (read . (:"")) (show $ factorial 100) :: [Integer])
+main = print $ sum (map (read . (:"")) (show $ factorial 100))
+
+-- 648
