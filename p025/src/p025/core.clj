@@ -1,6 +1,6 @@
 (ns p025.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(def fib
+  (lazy-cat [0.0 1.0] (map + fib (rest fib))))
+
+  (println (take 11 fib))
