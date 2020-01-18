@@ -5,5 +5,5 @@
 )
 
 (defn -main [& _]
-  (count (take-while #(> 1000 (count (str %))) fib))
+  (print (count (take-while #(> 1000 (count (str %))) fib)))
 )

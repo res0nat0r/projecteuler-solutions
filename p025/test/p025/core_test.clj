@@ -2,6 +2,6 @@
   (:require [clojure.test :refer :all]
             [p025.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest p025
+  (testing "Valid solution"
+           (is (= "4782" (with-out-str(-main))))))
