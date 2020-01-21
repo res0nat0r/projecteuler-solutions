@@ -3,13 +3,16 @@
 (defn factor? [n d]
   (zero? (rem n d)))
 
-(defn factors [n]
-  (filter #(factor? n %) (range 1 (inc n))))
+(def factors
+  (memoize
+    (fn [n]
+      (filter #(factor? n %) (range 1 (inc n))))))
 
 (defn triangle [n]
   (apply + (range (inc n))))
 
-(def triangle-factors
-  (let [n          (range)
-        triangle-n (map #(triangle %) n)]
-    (triangle-n)))
+(defn triangle-factors [n]
+  (factors (triangle n)))
+
+(defn -main [& _]
+  (last (take-while (partial > 500) (map #(count (triangle-factors %)) (range)))))
