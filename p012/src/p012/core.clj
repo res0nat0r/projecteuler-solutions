@@ -14,5 +14,6 @@
 (defn triangle-factors [n]
   (factors (triangle n)))
 
+# TODO Fix this
 (defn -main [& _]
   (last (take-while (partial > 500) (map #(count (triangle-factors %)) (range)))))
