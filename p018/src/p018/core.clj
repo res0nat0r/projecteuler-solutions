@@ -7,13 +7,9 @@
 (def triangle (with-open [rdr (clojure.java.io/reader "resources/triangle")]
                 (reduce conj [] (line-seq rdr))))
 
-
-
 (def parse-triangle
-  (for [t triangle]
+  (for [line triangle]
     (->>
-      (str/split t #" ")
+      (str/split line #"\D+")
       (filter not-empty))))
-
-
 
