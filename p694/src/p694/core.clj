@@ -12,8 +12,15 @@
 (defn prime? [n]
   (= 2 (count (factors n))))
 
+
+;     (flatten (conj (filter prime?  (take-while (partial > (int (Math/sqrt n))) (factors n))) [1 n])))
+
 (defn prime-factors [n]
-  (filter prime?  (take-while (partial > (int (Math/sqrt n))) (factors n))))
+  (->>
+    (factors n)
+    (take-while (partial > (int (Math/sqrt n))))
+    (filter prime?)))
+
 
 
 
