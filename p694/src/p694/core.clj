@@ -7,13 +7,13 @@
 (def factors
   (memoize
     (fn [n]
-      (filter #(factor? n %) (range 2 (bigint (Math/sqrt (inc n))))))))
+      (filter #(factor? n %) (range 1 (inc n))))))
 
 (defn prime? [n]
-  (empty? (factors n)))
+  (= 2 (count (factors n))))
 
 (defn prime-factors [n]
-  (filter #(prime? %) (factors n)))
+  (filter prime?  (take-while (partial > (int (Math/sqrt n))) (factors n))))
 
 
 
