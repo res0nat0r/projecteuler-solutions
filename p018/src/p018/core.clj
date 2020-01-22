@@ -1,6 +1,19 @@
-(ns p018.core)
+(ns p018.core
+  (:gen-class))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(require '[clojure.string :as str])
+
+
+(def triangle (with-open [rdr (clojure.java.io/reader "resources/triangle")]
+                (reduce conj [] (line-seq rdr))))
+
+
+
+(def parse-triangle
+  (for [t triangle]
+    (->>
+      (str/split t #" ")
+      (filter not-empty))))
+
+
+
