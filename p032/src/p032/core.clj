@@ -20,10 +20,9 @@
         b (range 1 1000)]
     (clojure.string/join (concat [a] [b] [(* a b)]))))
 
-(def xxx
+(def all-multiples
   (for [a (range 1 1000)
         b (range 1 1000)]
 
-    [(concat [a] [b] [(* a b)])
-     (read-string (clojure.string/join (concat [a] [b] [(* a b)])))]
-    ))
+     [(concat [a] [b] [(* a b)])
+     (read-string (clojure.string/join (concat [a] [b] [(* a b)])))]))
