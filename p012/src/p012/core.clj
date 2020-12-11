@@ -1,4 +1,5 @@
-(ns p012.core)
+(ns p012.core
+  (:gen-class))
 
 (defn factor? [n d]
   (zero? (rem n d)))
@@ -9,11 +10,28 @@
       (filter #(factor? n %) (range 1 (inc n))))))
 
 (defn triangle [n]
-  (apply + (range (inc n))))
+  (apply +' (range (inc n))))
 
-(defn triangle-factors [n]
+(defn triangle-factors' [n]
   (factors (triangle n)))
 
-# TODO Fix this
+(def triangle-factors
+  (memoize 
+    (fn [n]
+      (triangle-factors' n))))
+           
+
+
 (defn -main [& _]
-  (last (take-while (partial > 500) (map #(count (triangle-factors %)) (range)))))
+  (def a (apply max (map #(count (triangle-factors %)) (range 10000))))
+  (print a))
+
+
+
+
+
+
+
+
+
+;  (def a (map #(triangle-factors %) (range)))
