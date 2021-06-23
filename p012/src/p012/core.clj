@@ -9,29 +9,36 @@
     (fn [n]
       (filter #(factor? n %) (range 1 (inc n))))))
 
-(defn triangle [n]
-  (apply +' (range (inc n))))
-
-(defn triangle-factors' [n]
-  (factors (triangle n)))
-
-(def triangle-factors
-  (memoize 
+(def triangle
+  (memoize
     (fn [n]
-      (triangle-factors' n))))
-           
+      (apply +' (range (inc n))))))
 
 
 (defn -main [& _]
-  (def a (apply max (map #(count (triangle-factors %)) (range 10000))))
-  (print a))
+(println (last (first (filter #(> (count %) 500) (map #(factors %) (map #(triangle %) (range))))))))
+
+; (filter #(> (count %) 5) (map #(factors %) (map #(triangle %) (range 1 (inc 7)))))
 
 
 
+;; (defn triangle [n]
+;;   (apply +' (range (inc n))))
+
+;; (defn triangle-factors' [n]
+;;   (factors (triangle n)))
+
+;; (def triangle-factors
+;;   (memoize 
+;;     (fn [n]
+;;       (triangle-factors' n))))
 
 
 
+;; (defn -main [& _]
+;;   (def a (apply max (map #(count (triangle-factors %)) (range 10000))))
+;;   (print a))
 
 
-
-;  (def a (map #(triangle-factors %) (range)))
+; working
+; (filter #(> (count %) 5) (map #(factors %) (map #(triangle %) (range 1 (inc 7)))))
