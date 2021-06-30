@@ -1,22 +1,25 @@
 (ns p012.core
   (:gen-class))
 
-(defn factor? [n d]
-  (zero? (rem n d)))
-
-(def factors
-  (memoize
-    (fn [n]
-      (filter #(factor? n %) (range 1 (inc n))))))
-
-(def triangle
-  (memoize
-    (fn [n]
-      (apply +' (range (inc n))))))
-
 
 (defn -main [& _]
-(println (last (first (filter #(> (count %) 500) (map #(factors %) (map #(triangle %) (range))))))))
+  (println "biffa"))
+;; (defn factor? [n d]
+;;   (zero? (rem n d)))
+
+;; (def factors
+;;   (memoize
+;;     (fn [n]
+;;       (filter #(factor? n %) (range 1 (inc n))))))
+
+;; (def triangle
+;;   (memoize
+;;     (fn [n]
+;;       (apply +' (range (inc n))))))
+
+
+;; (defn -main [& _]
+;; (println (last (first (filter #(> (count %) 500) (map #(factors %) (map #(triangle %) (range))))))))
 
 ; (filter #(> (count %) 5) (map #(factors %) (map #(triangle %) (range 1 (inc 7)))))
 
