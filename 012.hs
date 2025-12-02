@@ -18,7 +18,7 @@ What is the value of the first triangle number to have over five hundred divisor
 -}
 
 triangle :: (Num a, Enum a) => a -> a
-triangle n = sum [1..n]
+triangle n = sum [1 .. n]
 
-factors :: Integral a => a -> [a]
-factors n = [x | x <- [1..n], n `mod` x == 0]
+factors :: (Integral a) => a -> [a]
+factors n = [x | x <- [1 .. n], n `mod` x == 0]
