@@ -12,8 +12,7 @@ Let us list the factors of the first seven triangle numbers:
 21:1,3,7,21
 28:1,2,4,7,14,28
 
-We can see that 28
-is the first triangle number to have over five divisors.
+We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
 -}
