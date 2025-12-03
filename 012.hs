@@ -29,6 +29,5 @@ factors n = [x | x <- [1 .. n], n `mod` x == 0]
 memoFactors :: Int -> [Int]
 memoFactors = memoize factors
 
--- main = print $ length $ takeWhile (< 501) $ map length $ map memoFactors $ map triangle [1..]
--- main=  sum $ length $ takeWhile (<= 501) $ map length $ map memoFactors  $ map triangle [1..]
-main = print $ succ $ sum $ takeWhile (<= 501) $ map length $ map memoFactors $ map triangle [1 ..]
+main :: IO ()
+main = print $ triangle $ length $ takeWhile (<= 501) $ map length $ map memoFactors $ map triangle [1 ..]
