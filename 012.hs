@@ -23,11 +23,21 @@ memoize f = (map f [0 ..] !!)
 triangle :: (Num a, Enum a) => a -> a
 triangle n = sum [1 .. n]
 
+memoTriangle :: Int -> Int
+memoTriangle = memoize triangle
+
 factors :: (Integral a) => a -> [a]
 factors n = [x | x <- [1 .. n], n `mod` x == 0]
 
 memoFactors :: Int -> [Int]
 memoFactors = memoize factors
 
+newFactors :: (Integral a) => a -> [a]
+newFactors n = [x | x <- [1 .. floor . sqrt . fromIntegral $ n + 1], n `mod` x == 0]
+
+memoNewFactors :: Int -> [Int]
+memoNewFactors = memoize newFactors
+
 main :: IO ()
-main = print $ triangle $ length $ takeWhile (<= 501) $ map length $ map memoFactors $ map triangle [1 ..]
+-- main = print $ triangle $ length $ takeWhile (<= 6) $ map length $ map memoFactors $ map memoTriangle [1 ..]
+main = print $ triangle $ length $ takeWhile (<= 6) $ map length $ map memoNewFactors $ map memoTriangle [1 ..]
