@@ -1,10 +1,10 @@
 clean:
   rm -f ??? *.hi *.o
 
-all: 001 002
+p001:
+  ghc -O 001.hs
 
-001: 001.hs
-	stack ghc 001.hs
+p002:
+  ghc -O 002.hs
 
-002: 002.hs
-	stack ghc 002.hs
+all: p001 p002

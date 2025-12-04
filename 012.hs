@@ -22,6 +22,9 @@ import Data.List (nub)
 triangle :: (RealFrac a, Integral b) => a -> b
 triangle n = floor $ ((n + 1) / 2) * n
 
+f :: Integral a => a -> [a]
+f n = [d | d <- [1 .. floor . sqrt . fromIntegral $ n], n `mod` d == 0]
+
 factors :: (Integral a) => a -> [a]
 factors n
     | n <= 0 = error "Factors are defined for positive integers."
