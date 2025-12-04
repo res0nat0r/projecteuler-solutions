@@ -38,6 +38,6 @@ xxfactors n
     divisorsUpToSqrt = [x | x <- [1 .. limit], n `mod` x == 0]
 
 main :: IO ()
-main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map (length . xxfactors) (map triangle [1 ..])
+main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map ((length . xxfactors) . triangle) [1 ..]
 
 -- 76576500
