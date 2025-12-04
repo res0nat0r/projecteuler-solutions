@@ -23,13 +23,7 @@ triangle :: (RealFrac a, Integral b) => a -> b
 triangle n = floor $ ((n + 1) / 2) * n
 
 factors :: (Integral a) => a -> [a]
-factors n = [x | x <- [1 .. n], n `mod` x == 0]
-
-newFactors :: (Integral a) => a -> [a]
-newFactors n = [x | x <- [1 .. floor . sqrt . fromIntegral $ n + 1], n `mod` x == 0]
-
-xxfactors :: (Integral a) => a -> [a]
-xxfactors n
+factors n
     | n <= 0 = error "Factors are defined for positive integers."
     | n == 1 = [1]
     | otherwise = nub $ concatMap (\x -> [x, n `div` x]) divisorsUpToSqrt
@@ -38,6 +32,6 @@ xxfactors n
     divisorsUpToSqrt = [x | x <- [1 .. limit], n `mod` x == 0]
 
 main :: IO ()
-main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map ((length . xxfactors) . triangle) [1 ..]
+main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map ((length . factors) . triangle) [1 ..]
 
 -- 76576500
