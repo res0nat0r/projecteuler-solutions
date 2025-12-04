@@ -17,38 +17,27 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over five hundred divisors?
 -}
 
-memoize :: (Int -> a) -> (Int -> a)
-memoize f = (map f [0 ..] !!)
+import Data.List (nub)
 
-triangle :: (Num a, Enum a) => a -> a
-triangle n = sum [1 .. n]
-
-
-
-memoize' f = (map f [0 ..] !!)
-
-memoTriangle :: Int -> Int
-memoTriangle = memoize triangle
-
-newTriangle n = floor $ ((n+1) / 2) * n
-
-memoNewTriangle = memoize' newTriangle
-
-
-
+triangle :: (RealFrac a, Integral b) => a -> b
+triangle n = floor $ ((n + 1) / 2) * n
 
 factors :: (Integral a) => a -> [a]
 factors n = [x | x <- [1 .. n], n `mod` x == 0]
 
-memoFactors :: Int -> [Int]
-memoFactors = memoize factors
-
 newFactors :: (Integral a) => a -> [a]
 newFactors n = [x | x <- [1 .. floor . sqrt . fromIntegral $ n + 1], n `mod` x == 0]
 
-memoNewFactors :: Int -> [Int]
-memoNewFactors = memoize newFactors
+xxfactors :: (Integral a) => a -> [a]
+xxfactors n
+    | n <= 0 = error "Factors are defined for positive integers."
+    | n == 1 = [1]
+    | otherwise = nub $ concatMap (\x -> [x, n `div` x]) divisorsUpToSqrt
+  where
+    limit = floor . sqrt $ fromIntegral n
+    divisorsUpToSqrt = [x | x <- [1 .. limit], n `mod` x == 0]
 
 main :: IO ()
--- main = print $ triangle $ length $ takeWhile (<= 6) $ map length $ map memoFactors $ map memoTriangle [1 ..]
-main = print $ triangle $ length $ takeWhile (<= 501) $ map length $ map memoFactors $ map memoNewTriangle [1 ..]
+main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map (length . xxfactors) (map triangle [1 ..])
+
+-- 76576500
