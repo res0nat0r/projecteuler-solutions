@@ -23,8 +23,19 @@ memoize f = (map f [0 ..] !!)
 triangle :: (Num a, Enum a) => a -> a
 triangle n = sum [1 .. n]
 
+
+
+memoize' f = (map f [0 ..] !!)
+
 memoTriangle :: Int -> Int
 memoTriangle = memoize triangle
+
+newTriangle n = floor $ ((n+1) / 2) * n
+
+memoNewTriangle = memoize' newTriangle
+
+
+
 
 factors :: (Integral a) => a -> [a]
 factors n = [x | x <- [1 .. n], n `mod` x == 0]
@@ -40,4 +51,4 @@ memoNewFactors = memoize newFactors
 
 main :: IO ()
 -- main = print $ triangle $ length $ takeWhile (<= 6) $ map length $ map memoFactors $ map memoTriangle [1 ..]
-main = print $ triangle $ length $ takeWhile (<= 6) $ map length $ map memoNewFactors $ map memoTriangle [1 ..]
+main = print $ triangle $ length $ takeWhile (<= 501) $ map length $ map memoFactors $ map memoNewTriangle [1 ..]
