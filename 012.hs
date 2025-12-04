@@ -22,8 +22,16 @@ import Data.List (nub)
 triangle :: (RealFrac a, Integral b) => a -> b
 triangle n = floor $ ((n + 1) / 2) * n
 
-f :: Integral a => a -> [a]
-f n = [d | d <- [1 .. floor . sqrt . fromIntegral $ n], n `mod` d == 0]
+stefF :: Integral a => a -> [a]
+stefF n = [d | d <- [1 .. floor . sqrt . fromIntegral $ n], n `mod` d == 0]
+
+stefF' :: Integral a => a -> [a]
+stefF' n = [ d | d <- [1 .. limit],  n `mod` d == 0]
+  where
+    limit = floor . sqrt $ fromIntegral n 
+
+
+
 
 factors :: (Integral a) => a -> [a]
 factors n = nub $ concatMap (\x -> [x, n `div` x]) divisorsUpToSqrt
