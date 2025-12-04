@@ -1,3 +1,6 @@
+clean:
+  rm -f ??? *.hi *.o
+
 all: 001 002
 
 001: 001.hs
@@ -5,6 +8,3 @@ all: 001 002
 
 002: 002.hs
 	stack ghc 002.hs
-
-clean: 
-	rm -f ??? *.hi *.o
