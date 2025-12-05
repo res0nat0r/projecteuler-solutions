@@ -1,10 +1,14 @@
+default:
+  just --list
+
 clean:
   rm -f ??? *.hi *.o
 
-p001:
-  ghc -O 001.hs
+build problem:
+  ghc -O {{problem}}.hs
 
-p002:
-  ghc -O 002.hs
+run problem: (build problem)
+  ./{{problem}}
 
-all: p001 p002
+build-all:
+  for x in *.hs;do ghc -O $x ; done
