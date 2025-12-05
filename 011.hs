@@ -35,3 +35,30 @@ input =
 
 matrix = map (map read . words) (lines input) :: [[Int]]
 main = print "fixme"
+
+(def matrix (parse-input input))
+
+(def across matrix)
+
+(def down (apply map list matrix))
+              
+(def diagonal
+  (let [rows (count matrix) cols (count (first matrix))]
+    (for [c (range (- rows) cols)]
+      (for [r (range 0 rows) :when (< -1 (+ c r) (count matrix))]
+
+        (get-in matrix [r (+ r c)])))))
+
+(def reverse-diagonal
+  (let [rows (count matrix) cols (count (first matrix))]
+    (for [c (range 0 (+ rows cols))]
+      (for [r (range 0 rows) :when (< -1 (- c r) 20)]
+
+        (get-in matrix [r (- c r)])))))
+
+(defn -main [& _]
+  (println
+    (->> (concat across down diagonal reverse-diagonal)
+         (mapcat #(partition 4 1 %))
+         (map #(apply * %))
+         (apply max))))
