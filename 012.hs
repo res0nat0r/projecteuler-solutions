@@ -24,15 +24,9 @@ triangle n = floor $ ((n + 1) / 2) * n
 
 factors :: (Integral a) => a -> [a]
 factors n = nub $ concatMap (\x -> [x, n `div` x]) d
-<<<<<<< HEAD
  where
   limit = floor . sqrt $ fromIntegral n
   d = [x | x <- [1 .. limit], n `mod` x == 0]
-=======
-  where
-    limit = floor . sqrt $ fromIntegral n
-    d = [x | x <- [1 .. limit], n `mod` x == 0]
->>>>>>> haskell
 
 main :: IO ()
 main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map ((length . factors) . triangle) [1 ..]
