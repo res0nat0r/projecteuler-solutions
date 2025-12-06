@@ -1,6 +1,3 @@
-default:
-  just --list
-
 clean:
   rm -f ??? *.hi *.o
 
@@ -18,3 +15,6 @@ build-all:
 
 run-all: build-all
   for x in ??? ; do echo ${x}: ; ./$x ; echo ; done
+
+hlint-all:
+  for x in *.hs;do hlint --refactor $x > x ; mv x $x ; done

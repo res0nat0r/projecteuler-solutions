@@ -22,10 +22,10 @@ module Main where
 import Data.List (elemIndex)
 
 collatz n
-  | even n == True = n `div` 2
+  | even n = n `div` 2
   | otherwise = 3 * n + 1
 
-lengths = map length $ map (takeWhile (/= 1)) $ map (iterate collatz) [1 .. 999999]
+lengths = map (length . takeWhile (/= 1)) (map (iterate collatz) [1 .. 999999])
 largest = maximum lengths
 
 main = print $ elemIndex largest lengths

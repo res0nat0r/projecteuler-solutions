@@ -7,7 +7,7 @@ palindrome p
   | show p == reverse (show p) = True
   | otherwise = False
 
-main = putStrLn (show answer)
+main = print answer
 answer = maximum $ filter palindrome $ map (\[x, y] -> x * y) $ sequence [[100 .. 999], [100 .. 999]]
 
 -- 906609
