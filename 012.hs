@@ -29,6 +29,6 @@ factors n = nub $ concatMap (\x -> [x, n `div` x]) d
     d = [x | x <- [1 .. limit], n `mod` x == 0]
 
 main :: IO ()
-main = print $ triangle $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map ((length . factors) . triangle) [1 ..]
+main = print $ triangle    $ fromIntegral $ succ $ length $ takeWhile (<= 501) $ map ((length . factors) . triangle) [1 ..]
 
 -- 76576500
