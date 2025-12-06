@@ -1,0 +1,20 @@
+name: python
+
+on:
+  push:
+    paths:
+      - '*.hs'
+    branches:
+      - haskell
+  pull_request:
+    paths:
+      - '*.hs'
+
+jobs:
+  fourmolu:
+    runs-on:
+      - ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Fourmolu
+        uses: haskell-actions/run-fourmolu@v11
