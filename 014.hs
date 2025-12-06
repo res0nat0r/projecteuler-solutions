@@ -25,7 +25,7 @@ collatz n
   | even n = n `div` 2
   | otherwise = 3 * n + 1
 
-lengths = map (length . takeWhile (/= 1)) (map (iterate collatz) [1 .. 999999])
+lengths = map ((length . takeWhile (/= 1)) . iterate collatz) [1 .. 999999]
 largest = maximum lengths
 
 main = print $ elemIndex largest lengths
