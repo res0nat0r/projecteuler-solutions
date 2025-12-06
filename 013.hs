@@ -4,6 +4,6 @@ module Main where
 
 main = do
   file <- readFile "013.txt"
-  print $ take 10 $ show $ sum $ map read $ lines file 
+  print $ take 10 $ show $ sum $ map read $ lines file
 
 -- 5537376230
