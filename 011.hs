@@ -56,5 +56,5 @@ maxProduct m = maximum [u, d, diag, rdiag]
 main :: IO ()
 main = do
   f <- readFile "011.txt"
-  let matrix =     map (map read . words  ) (lines f) ::   [[Int]]
+  let matrix = map (map read . words) (lines f) :: [[Int]]
   print $ maxProduct matrix

@@ -10,13 +10,17 @@ Find the product abc.
 
 main = print answer
 
-answer = product $ head $ 
-  [ [a,b,c] |
-    a<-[1..997], 
-    b<-[1..997], 
-    c<-[1..997], 
-    a < b, 
-    b < c, 
-    a^2 + b^2 == c^2, a + b + c == 1000]
+answer =
+  product $
+    head $
+      [ [a, b, c]
+      | a <- [1 .. 997],
+        b <- [1 .. 997],
+        c <- [1 .. 997],
+        a < b,
+        b < c,
+        a ^ 2 + b ^ 2 == c ^ 2,
+        a + b + c == 1000
+      ]
 
 -- 31875000

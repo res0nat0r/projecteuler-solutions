@@ -3,9 +3,9 @@
 
 module Main where
 
-prime n = n == 2 || n > 2 && all ((> 0).rem n) (2:[3,5..floor.sqrt.fromIntegral $ n + 1])
+prime n = n == 2 || n > 2 && all ((> 0) . rem n) (2 : [3, 5 .. floor . sqrt . fromIntegral $ n + 1])
 
 main = do
-  print $ sum $ filter prime [1..1999999]
+  print $ sum $ filter prime [1 .. 1999999]
 
 -- 142913828922

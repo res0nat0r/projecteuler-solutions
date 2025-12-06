@@ -14,4 +14,7 @@ runghc problem:
   runghc {{problem}}.hs
 
 build-all:
-  for x in *.hs;do ghc -O $x ; done
+  for x in *.hs ; do ghc -O $x ; done
+
+run-all: build-all
+  for x in ??? ; do echo ${x}: ; ./$x ; echo ; done
