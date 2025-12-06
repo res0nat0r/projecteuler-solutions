@@ -1,3 +1,6 @@
+default:
+  just --list
+
 clean:
   rm -f ??? *.hi *.o
 
