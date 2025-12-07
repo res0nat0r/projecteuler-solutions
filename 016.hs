@@ -8,6 +8,6 @@ What is the sum of the digits of the number 2^1000?
 
 module Main where
 
-main = print $ sum  (map (read . (:"")) (show $ 2^1000) :: [Integer])
+main = print $ sum (map (read . (: "")) (show $ 2 ^ 1000) :: [Integer])
 
 -- 1366

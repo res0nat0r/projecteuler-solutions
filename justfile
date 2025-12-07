@@ -1,6 +1,3 @@
-default:
-  just --list
-
 clean:
   rm -f ??? *.hi *.o
 
@@ -10,5 +7,14 @@ build problem:
 run problem: (build problem)
   ./{{problem}}
 
+runghc problem:
+  runghc {{problem}}.hs
+
 build-all:
-  for x in *.hs;do ghc -O $x ; done
+  for x in *.hs ; do ghc -O $x ; done
+
+run-all: build-all
+  for x in ??? ; do echo ${x}: ; ./$x ; echo ; done
+
+hlint-all:
+  for x in *.hs;do hlint --refactor $x > x ; mv x $x ; done

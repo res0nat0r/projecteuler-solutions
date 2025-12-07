@@ -6,8 +6,8 @@ divisible n d
   | mod n d == 0 = True
   | otherwise = False
 
-allDivisible n = all (== True) [divisible n d | d <- [1..20]]
+allDivisible n = all (== True) [divisible n d | d <- [1 .. 20]]
 
-main = print $ head $ filter allDivisible [1..]
+main = print $ head $ filter allDivisible [1 ..]
 
 -- 232792560
