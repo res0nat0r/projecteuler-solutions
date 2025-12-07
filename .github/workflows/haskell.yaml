@@ -13,7 +13,7 @@ on:
 jobs:
   fourmolu:
     runs-on:
-      - ubuntu-20.04
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Fourmolu
