@@ -33,3 +33,10 @@ containing one-hundred rows; it cannot be solved by brute force, and requires a
 clever method! ;o)
 -}
 
+
+main :: IO ()
+main = do
+  f <- readFile "018.txt"
+  let matrix = map (map read . words) (lines f) :: [[Int]]
+  print $ maxProduct matrix
+
