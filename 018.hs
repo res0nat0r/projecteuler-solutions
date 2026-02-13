@@ -1,3 +1,4 @@
+import Distribution.Simple.Utils (xargs)
 {-
 By starting at the top of the triangle below and moving to adjacent numbers on
 the row below, the maximum total from top to bottom is 23 .
@@ -33,10 +34,17 @@ containing one-hundred rows; it cannot be solved by brute force, and requires a
 clever method! ;o)
 -}
 
-
 main :: IO ()
 main = do
   f <- readFile "018.txt"
   let matrix = map (map read . words) (lines f) :: [[Int]]
-  let result = row1 row2 maxRow
-    where
+
+  let result row = map maximum triangle where
+        triangle = zipWith (\a b -> a : [b]) row (tail row)
+
+  let maxStep current next = zipWith (+) next (result current)
+
+  let maxPath [[x]] = x :: Int
+      maxPath (current:next:rest) = maxPath $ (maxStep current next) : rest :: Int
+
+  print $ maxPath $ matrix 
