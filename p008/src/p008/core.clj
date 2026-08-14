@@ -1,8 +1,5 @@
-; The four adjacent digits in the 1000-digit number 
-; that have the greatest product are 9 × 9 × 8 × 9 = 5832.
-; Find the thirteen adjacent digits in the 1000-digit 
-; number that have the greatest product. What is the 
-; value of this product?
+(ns p008.core
+  (:gen-class))
 
 (def input
 "73167176531330624919225119674426574742355349194934
@@ -29,6 +26,5 @@
 (defn char-to-int [input]
   (reduce * (map #(- (int %) 48) input)))
 
-(reduce max (map char-to-int (partition 13 1 (remove #(= \newline %) input))))
-
-; 23514624000
+(defn -main [& _]
+  (println (reduce max (map char-to-int (partition 13 1 (remove #(= \newline %) input))))))
