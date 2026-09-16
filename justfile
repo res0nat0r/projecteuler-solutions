@@ -1,3 +1,5 @@
+set default-list := true
+
 clean:
   rm -f ??? *.hi *.o
 
