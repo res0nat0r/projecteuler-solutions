@@ -34,17 +34,21 @@ containing one-hundred rows; it cannot be solved by brute force, and requires a
 clever method! ;o)
 -}
 
+result :: [Integer] -> [Integer]
+result row = map maximum triangle where
+  triangle = zipWith (\a b -> a : [b]) row (tail row)
+
+maxStep :: [Integer] -> [Integer] -> [Integer]
+maxStep current next = zipWith (+) next (result current)
+
+maxPath :: [[Integer]] -> Integer
+maxPath [[x]] = x 
+maxPath (current:next:rest) = maxPath $ (maxStep current next) : rest
+
 main :: IO ()
 main = do
   f <- readFile "018.txt"
-  let matrix = map (map read . words) (lines f) :: [[Int]]
+  let matrix = map (map read . words) (lines f) :: [[Integer]]
 
-  let result row = map maximum triangle where
-        triangle = zipWith (\a b -> a : [b]) row (tail row)
+   print $ maxPath $ matrix 
 
-  let maxStep current next = zipWith (+) next (result current)
-
-  let maxPath [[x]] = x :: Int
-      maxPath (current:next:rest) = maxPath $ (maxStep current next) : rest :: Int
-
-  print $ maxPath $ matrix 
