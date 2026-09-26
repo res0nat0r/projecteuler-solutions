@@ -1,5 +1,8 @@
 ; What is the 10 001st prime number?
 
+(ns p007.core
+  (:gen-class))
+
 (defn factor? [n d]
     (zero? (rem n d)))
 
@@ -9,4 +12,5 @@
 (defn prime? [n]
     (empty? (factors n)))
 
-(println (nth (filter prime? (range)) 10002))
+(defn -main [& _]
+  (println (nth (filter prime? (range)) 10002)))

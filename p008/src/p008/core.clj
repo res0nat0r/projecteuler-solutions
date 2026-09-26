@@ -4,6 +4,9 @@
 ; number that have the greatest product. What is the 
 ; value of this product?
 
+(ns p008.core
+  (:gen-class))
+
 (def input
 "73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -29,6 +32,5 @@
 (defn char-to-int [input]
   (reduce * (map #(- (int %) 48) input)))
 
-(reduce max (map char-to-int (partition 13 1 (remove #(= \newline %) input))))
-
-; 23514624000
+(defn -main [& _]
+  (println (reduce max (map char-to-int (partition 13 1 (remove #(= \newline %) input))))))
